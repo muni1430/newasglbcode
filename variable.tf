@@ -14,3 +14,29 @@ variable "instance_type"{
   type = string
   default = "t2.micro"
 }
+variable "availability_zones" {
+  type = list(string)
+  default = ["us-east-1c"]
+}
+variable "vpc_id" {
+  type = string
+  default = "vpc-6014600b"
+}
+variable "target_id" {
+  type = string
+}
+variable "protocol" {
+  type = string
+  default = "HTTP"
+}
+variable "subnets" {
+  type = list(string)
+}
+variable "security_groups" {
+  type = list(string)
+  default = ["sg-03769a97218bb6646"]
+}
+variable "load_balancer_type" {
+  type = string
+  default = "application"
+}
