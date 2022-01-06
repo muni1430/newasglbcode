@@ -3,9 +3,9 @@ provider "aws" {
   region = "us-east-1"
 }
 resource "aws_launch_configuration" "as_conf" {
-  name_prefix   = "terraform-lc-example-"
-  image_id      = "ami-04505e74c0741db8d"
-  instance_type = "t2.micro"
+  name_prefix   = var.name_prefix 
+  image_id      = var.image_id
+  instance_type = var.instance_type
 }
 resource "aws_autoscaling_group" "bar" {
   availability_zones = ["us-east-1c"]
