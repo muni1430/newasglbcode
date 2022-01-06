@@ -24,6 +24,7 @@ variable "vpc_id" {
 }
 variable "target_id" {
   type = string
+  default = "i-0080b8172b18ad08a"
 }
 variable "protocol" {
   type = string
@@ -31,6 +32,7 @@ variable "protocol" {
 }
 variable "subnets" {
   type = list(string)
+ default =  ["subnet-bff76bd4","subnet-15e22868"]
 }
 variable "security_groups" {
   type = list(string)
