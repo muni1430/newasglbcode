@@ -9,9 +9,11 @@ resource "aws_launch_configuration" "as_conf" {
 }
 resource "aws_autoscaling_group" "bar" {
   availability_zones = ["us-east-1c"]
-  name                 = "terraform-asg-example"
-  launch_configuration = aws_launch_configuration.as_conf.name
-    desired_capacity   = 1
-    min_size             = 1
-    max_size             = 2
+  desired_capacity   = 1
+  max_size           = 1
+  min_size           = 1
+  launch_template {
+    id      = aws_launch_template.foobar.id
+    version = "$Latest"
+  }
 }
