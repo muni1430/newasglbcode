@@ -1,16 +1,17 @@
-resource "aws_launch_template" "foobar" {
-  name_prefix   = "foobar"
-  image_id      = "ami-04505e74c0741db8d"
-  instance_type = "t2.micro"
+resource "aws_launch_configuration" "as_config" {
+  name_prefix   = var.name_prefix
+  image_id      = var.image_id
+  instance_type = var.instance_type
+  security_groups    = ["sg-03769a97218bb6646"]
+  user_data = "${file("userdata.sh")}"
 }
 resource "aws_autoscaling_group" "bar" {
-  availability_zones = ["us-east-1c"]
-  desired_capacity   = 1
-  max_size           = 1
-  min_size           = 1
-  launch_template {
-    id      = aws_launch_template.foobar.id
-     target_group_arns = [var.target_group_arns]
-    version = "$Latest"
-  }
+  name                 = var.name 
+  depends_on           = ["aws_launch_configuration.as_config"]
+  launch_configuration = aws_launch_configuration.as_config.name
+  min_size             = 1
+  max_size             = 2
+  desired_capacity     = 1
+  target_group_arns = [var.target_group_arns]
+ availability_zones = var.availability_zones
 }
