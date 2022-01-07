@@ -46,7 +46,3 @@ variable "security_groups" {
   type = list(string)
   default = ["sg-03769a97218bb6646"]
 }
-variable "load_balancer_type" {
-  type = string
-  default = "application"
-}
