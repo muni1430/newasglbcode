@@ -1,7 +1,7 @@
 resource "aws_lb" "test" {
   name               = var.name_lb
   internal           = false
-  load_balancer_type = var.load_balancer_type
+  load_balancer_type = "Classic (Migrate Now)"
   security_groups    = var.security_groups
   subnets            = var.subnets
 }
