@@ -28,7 +28,7 @@ variable "name_lb" {
 }
 variable "load_balancer_type" {
   type = string
-  default = "application"
+  default = "Classic (Migrate Now)"
 }
 variable "target_id" {
   type = string
