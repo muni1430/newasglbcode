@@ -14,9 +14,21 @@ variable "availability_zones" {
   type = list(string)
   default = ["us-east-1c"]
 }
+variable "name" {
+  type = string
+  default = "terraform-asg-example"
+}
 variable "vpc_id" {
   type = string
   default = "vpc-6014600b"
+}
+variable "name_lb" {
+  type = string
+  default = "test-lb-tf"
+}
+variable "load_balancer_type" {
+  type = string
+  default = "application"
 }
 variable "target_id" {
   type = string
